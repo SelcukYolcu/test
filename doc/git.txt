@@ -1,0 +1,123 @@
+git init
+	initialize git repository in related directory
+git add .
+git add directory or file name  (or . for all file)
+	add is used  modified, created or manually deleted files
+git rm d or f (or . for all file)
+	to delete commited file from  directory
+	if already file is deleted manually, 
+	it is same with add, it adds changes to staged area
+git satatus (d or f is optinal for detailed)
+git log
+git log --oneline --> one line not detailed  
+git commit -m "message"
+git diff d or f --> diff between ws and staged area (d or f is optinal if they are not used, command work for all files)
+git diff --staged d or f --> diff between staged area and git repository (d or f is optinal)
+git rm -r folder name
+	-r --> recursive... First delete files in the folder,  then delete folder
+	
+git mv directory/file directory2/file2
+	move file from directory1 to directory2 as name is file2
+	git mv file1 file2 --> this rename the file
+
+git checkout -- file1 file2... (or . for all file)
+	this revert last local changes
+
+--> if "git add ." is used for changes (not commit)
+1- git reset HEAD file1 file2 ...
+	firstly to revert from staged area
+2- git checkout -- file1 file2
+	then to revert from ws
+or
+git rm --cached file1 file2
+	delete from staged area
+	this command is for not commited files
+
+git reset <log id> --hard
+	revert files to log id
+	delete all changes and commits till id
+git reset <log id> --soft 
+	revert files except commited files
+	delete all commits till id
+	but keep local changes
+	
+git checkout <hash code> -- . (. is for change all files)
+	to change current files with older versions, revert to older files,
+	after command, it should run add and commit to explain "revert older"
+	hash code from git log, key after "commit:"
+
+git remote add <give a short name to url> <url>
+	link ws to remote url such as githup
+git push -u <short name> master
+	send data to url, -u for all files, master is which branch to push
+	direct link can be written instead of short name
+git pull
+	download from repository from url 
+
+.gitignore --> this is file under the directory.
+	*.exe   --> ignore exe files
+	deneme1/* ignore all under the deneme1
+	!deneme1/1.html --> not ignore 1.html (all files will ignore except 1.html)
+
+git branch 
+	show branchs in project in local ws
+git branch --all 
+	show all branchs contain remote url
+git branch <branch name>
+	crate new branch
+git checkout <branch name>
+	switch branch
+git diff <branch name> <branch name>
+	list diff between two branch
+git merge branch1
+	merge current branch and branch1
+
+git config --list
+git conifg --global user.name "user name"
+git config --global user.email "user email"
+
+pwd --> give current directory
+ls -a list hidden file folders
+touc filename.ext --> create file
+
+git commit --amend -m "edit message for last commit"
+
+git checkout -b branch2
+	branch2 is created, and go branc2
+git branch -d branch2
+	delete branch2
+git branch -D branch2
+	force to delete branch2
+
+git clone link
+git remote -v
+	list remote link
+
+git fetch branch name
+	this pull changes under the git but not merge with branch
+git pull branch name
+	this pull changes and merge
+
+git stash save "message"
+	send files to stash area and revert changes
+git stash --list
+git stash show -p <stash id>
+	show diff between current file and in stash file
+git stash drop
+	delete last stash
+git stash drop <stash id>
+git stash pop <stash id> 
+	reload files to ws
+
+git config --global alias.st status
+	create short comman git st instead of git status
+
+git show-branch *master
+	to show not pulled commits from remote
+
+git diff remote/master 
+	to show difference between local and remote
+
+git branch --set-upstream-to=origin1/master
+	to set default remote/master
+
