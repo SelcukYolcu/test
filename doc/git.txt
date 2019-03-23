@@ -14,13 +14,13 @@ git commit -m "message"
 git diff d or f --> diff between ws and staged area (d or f is optinal if they are not used, command work for all files)
 git diff --staged d or f --> diff between staged area and git repository (d or f is optinal)
 git rm -r folder name
-	-r --> recursive... First delete files in the folder,  then delete folder
+	-r --> recursive... for comited folders, First delete files in the folder,  then delete folder
 	
 git mv directory/file directory2/file2
 	move file from directory1 to directory2 as name is file2
 	git mv file1 file2 --> this rename the file
 
-git checkout -- file1 file2... (or . for all file)
+git checkout -- file1 fie2... (or . for all file)
 	this revert last local changes
 
 --> if "git add ." is used for changes (not commit)
@@ -32,6 +32,8 @@ or
 git rm --cached file1 file2
 	delete from staged area
 	this command is for not commited files
+	delete from git version control
+	put file to untracked files
 
 git reset <log id> --hard
 	revert files to log id
@@ -40,6 +42,7 @@ git reset <log id> --soft
 	revert files except commited files
 	delete all commits till id
 	but keep local changes
+git diff log-id log-id
 	
 git checkout <hash code> -- . (. is for change all files)
 	to change current files with older versions, revert to older files,
@@ -48,11 +51,15 @@ git checkout <hash code> -- . (. is for change all files)
 
 git remote add <give a short name to url> <url>
 	link ws to remote url such as githup
+
 git push -u <short name> master
-	send data to url, -u for all files, master is which branch to push
+	send data to url, master is which branch to push
 	direct link can be written instead of short name
-git pull
+	 -u is for --set-upstream-to=origin1/master
+
+git pull remote master
 	download from repository from url 
+	if upstream is setted, remote and master are optional
 
 .gitignore --> this is file under the directory.
 	*.exe   --> ignore exe files
@@ -68,9 +75,15 @@ git branch <branch name>
 git checkout <branch name>
 	switch branch
 git diff <branch name> <branch name>
-	list diff between two branch
+	list diff between two branch comitted
 git merge branch1
 	merge current branch and branch1
+	get new changes from branch1 to branch1 not reverse 
+
+if there is new branch on repository use
+git checkout new-branch
+	this create new-branch and
+	link new-branch to origin/new-branch 
 
 git config --list
 git conifg --global user.name "user name"
@@ -78,7 +91,7 @@ git config --global user.email "user email"
 
 pwd --> give current directory
 ls -a list hidden file folders
-touc filename.ext --> create file
+touch filename.ext --> create file
 
 git commit --amend -m "edit message for last commit"
 
@@ -97,12 +110,17 @@ git fetch branch name
 	this pull changes under the git but not merge with branch
 git pull branch name
 	this pull changes and merge
+or
+git checkout origin3/master -- path to file
+	to get only specific file
+	it is not git pull, it doesn't get comit
+	take only file canges because of fetch
 
 git stash save "message"
 	send files to stash area and revert changes
-git stash --list
+git stash list
 git stash show -p <stash id>
-	show diff between current file and in stash file
+	show diff between current file and in stash 
 git stash drop
 	delete last stash
 git stash drop <stash id>
@@ -110,14 +128,17 @@ git stash pop <stash id>
 	reload files to ws
 
 git config --global alias.st status
-	create short comman git st instead of git status
+	create short command git st instead of git status
 
-git show-branch *master
+git show-branch origin1/master
+	after git fetch
 	to show not pulled commits from remote
 
-git diff remote/master 
+git diff master remote/master 
 	to show difference between local and remote
 
 git branch --set-upstream-to=origin1/master
 	to set default remote/master
 
+git ls-tree --full-tree origin1/master
+	after git fetch it show files on remote branch
