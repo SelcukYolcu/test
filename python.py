@@ -1,7 +1,6 @@
 import numpy
 import keyboard
 import cv2
-import PIL
 
 def method():
     #new method
