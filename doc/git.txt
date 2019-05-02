@@ -142,3 +142,7 @@ git branch --set-upstream-to=origin1/master
 
 git ls-tree --full-tree origin1/master
 	after git fetch it show files on remote branch
+	
+git config credential.username 'new github user name'
+	set new github user to get permission 
+
